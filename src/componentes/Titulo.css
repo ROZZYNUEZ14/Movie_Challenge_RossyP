@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Keania+One&display=swap');
+*{
+    margin: 0
+}
+.contenedorTitulo{
+    background-color: black;
+    color: white;
+    font-family: 'Keania One', sans-serif;
+    padding: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+.titulo::before {
+    content: 'Ruta';
+    color: #cc2c11;
+}
+
+.titulo::after {
+    content: 'Cinéfila';
+    color: white;
+}
+
