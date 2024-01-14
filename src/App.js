@@ -1,6 +1,6 @@
 import React from "react"
 import  { BrowserRouter, Link, Routes, Route} from "react-router-dom"
-import { Home } from "./Home"
+import { Home } from "./vistas/Home"
 import { Hola } from "./components"
 
 //const Home = () => <h1 style={{ backgroundColor: 'red' }}>JJHJJJ</h1>
