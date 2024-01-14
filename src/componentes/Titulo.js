@@ -6,7 +6,5 @@ export function Titulo(){
     return <div className="contenedorTitulo">
             <img src={palomitas} className="imagenPalomitas" />
             <h1 className="titulo"></h1>
-        </div>
-        
-        
+        </div>   
 }
