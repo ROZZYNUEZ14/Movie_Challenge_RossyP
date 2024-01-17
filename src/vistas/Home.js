@@ -70,7 +70,7 @@ export function Home(){
               <div className="contenedorTarjetas">
                   {pelis
                   .map((peli) => (
-                  
+                 // console.log(peli)
                   <div key={peli.id} className="tarjeta" onClick={() => peliculaSeleccionada(peli)}>
                     
                       <img src={`${imagen+peli.poster_path}`} alt={peli.id} className="imagenTarjeta"/>
@@ -81,7 +81,7 @@ export function Home(){
                       
                   </div>
                   
-                  )).slice(firstIndex, lastIndex)}
+                )).slice(firstIndex, lastIndex)}
               </div>
             </div>
 
