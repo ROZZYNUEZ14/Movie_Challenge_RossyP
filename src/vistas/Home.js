@@ -13,19 +13,25 @@ export function Home(){
   const navigate = useNavigate();
   
     const imagen = "https://image.tmdb.org/t/p/original"
-    //const urlImagen = "https://image.tmdb.org/t/p/original"
+   
     const [pelis, setPelis] = useState([]);
-    const totalPelis = pelis.length
+    const [total, setTotal] = useState()
     const [pagina, setPagina] = useState(1)
     const [pelisPorPagina, setPelisPorPagina] = useState(20)
-    console.log(pelis)
+    const [genres, setGenres] = useState([])
+    /*
+    const totalPelis = pelis.length
+      console.log(pelis)
+      */
+     const totalPelis =total
+    console.log(total)
 
-    const lastIndex = pagina * pelisPorPagina
-    const firstIndex = lastIndex - pelisPorPagina
+    //const lastIndex = pagina * pelisPorPagina
+    //onst firstIndex = lastIndex - pelisPorPagina
 
     useEffect(() => {
-        const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYWU1MmQ5NjMwYmU0OGQ3MWI5ZDZmNjE4N2M1MjFkZSIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ri_5MZ97eVFPpGruOfiBv_SO5Bs29YPZul5_4BrzvNY"; // Reemplaza "tu_api_key" con tu clave de API de TMDb
-        
+        const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzNDNmZDBiNDI0MjMxZGI3NzhhNTE5ZWUwZTRmZiIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XK6YLJBNIzATieAhms4iOq8q6V-3_RbmKJJbzboz7pg"; 
+        //const apikey ="0c9343fd0b424231db778a519ee0e4ff"
         const options = {
           method: 'GET',
           headers: {
@@ -33,20 +39,22 @@ export function Home(){
             Authorization: 'Bearer ' + apiKey,
           }
         };
-
-        fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=es-Es&page=${pagina}`, options)
+       
+        fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=${pagina}&with_genres=${genreId}`, options)
           .then(response=> response.json())
           .then((data) => {
             setPelis(data.results);
-            console.log(data.results);
+            setTotal(data.total_results);
+            setGenres(data.results)
           })
           .catch((error) => {
             console.error("Error de red:", error);
           });
           console.log("Página actual:", pagina)
+          
       }, [pagina]);
-
-
+      
+      
       const [selecPelicula, setSelecPelicula] = useState(null)
 
       function peliculaSeleccionada (peli){
@@ -55,15 +63,18 @@ export function Home(){
         navigate(nuevoPath);
  
       }
-/*
-      const maximo = pelis.length /porPagina
 
-      console.log(pelis.length)
-*/
+      const [genreId, setGenreId] = useState("")
+
+      const seleccionarGenre = (genreId)=>{
+          setGenreId(genreId)
+      }
+      console.log("Genre de HOME", genres)
+      console.log("genreID", genreId)
     return <>
             <div>
               < Titulo />
-              < Filtro />
+              < Filtro genres={genres} seleccionarGenre={seleccionarGenre}/>
             </div>
            
             <div className="contenedorPrincipalTarjetas">
@@ -81,7 +92,7 @@ export function Home(){
                       
                   </div>
                   
-                )).slice(firstIndex, lastIndex)}
+                ))}
               </div>
             </div>
 
