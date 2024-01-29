@@ -1,7 +1,16 @@
 import "./Filtros.css"
+import React from "react";
 
-
-export function Filtro(){
+export function Filtro(props){
+    const {genres, seleccionarGenre} = props
+    
+    console.log("SOY GENRES", genres)
+    //console.log(seleccionarGenre)
+    const genreSeleccionado =(e)=>{
+        seleccionarGenre(e.target.value)
+    }
+    console.log("SOY EL ONCLICK", genreSeleccionado)
+    console.log(seleccionarGenre)
     return <>
         <div className="contenedorPrincipalFil">
             <div className="contenedorOrdenar">
@@ -15,10 +24,15 @@ export function Filtro(){
 
             <div className="contenedorFiltrar">
                 <label htmlFor="filtro" className="textoFiltrar">Filtrar por: </label>
-                <select name="filtrar" id="filtro" className="filtrar">
+                <select name="filtrar" id="filtro" className="filtrar" onChange={genreSeleccionado}>
                     <option value="" disabled>--Elige una Opción--</option>
-                    <option value="fecha">Fecha</option>
-                    <option value="genero">Género</option>
+                    {genres
+                    .map((genre) =>{
+                        
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+                        
+                    })}
+                   
                 </select>
             </div>
 
