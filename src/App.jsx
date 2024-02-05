@@ -24,7 +24,7 @@ const App = () => {
     </header>*/}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies/:movie.id" element={<Detalle />} />
+          <Route path="/movies/:id" element={<Detalle />} />
         </Routes>
       </BrowserRouter>
     );
