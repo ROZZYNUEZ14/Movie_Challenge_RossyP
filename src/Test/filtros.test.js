@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-//import "@testing-library/jest-dom/extend-expect";
 import { Filtro } from "../componentes/Filtros";
+import React from "react";
 
 describe("<Filtro/>", () => {
     test("renders componentes en Filtro", () => {

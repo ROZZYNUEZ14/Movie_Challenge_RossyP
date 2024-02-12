@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react"
-import { Titulo } from "../componentes/Titulo"
+import  Titulo  from "../componentes/Titulo"
 import { Filtro } from "../componentes/Filtros"
 import "./Home.css"
 import { Paginacion } from "../componentes/Paginacion"
@@ -7,12 +7,9 @@ import { Detalle } from "./Detalle"
 import { useLocation, useNavigate, Link} from "react-router-dom";
 import sinImage from "../img/sinImage.png"
 
-export function Home(){
 
-  let {search} = useLocation();
-  let queryLocation = new URLSearchParams(search)
-  console.log(queryLocation)
-  
+export function Home(){
+ 
   const navigate = useNavigate();
   
     const imagen = "https://image.tmdb.org/t/p/original"
@@ -26,10 +23,7 @@ export function Home(){
     const [sortBy, setSortBy] = useState("")
     
      const totalPelis =total
-    //console.log(total)
-    //console.log(pelis)
-    //const lastIndex = pagina * pelisPorPagina
-    //onst firstIndex = lastIndex - pelisPorPagina
+
 
     const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzNDNmZDBiNDI0MjMxZGI3NzhhNTE5ZWUwZTRmZiIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XK6YLJBNIzATieAhms4iOq8q6V-3_RbmKJJbzboz7pg"; 
     //const apikey ="0c9343fd0b424231db778a519ee0e4ff"
@@ -43,7 +37,7 @@ export function Home(){
 
     useEffect(() => {
        
-        fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=${pagina}&with_genres=${genreId}${sortBy ? `&sort_by=${sortBy}` : ""}`, options)
+        fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=${pagina}&${genreId ? `&with_genres=${genreId}`: ""}${sortBy ? `&sort_by=${sortBy}` : ""}`, options)
           .then(response=> response.json())
           .then((data) => {
             setPelis(data.results);
@@ -72,7 +66,7 @@ export function Home(){
 
       useEffect(() => {
        
-        fetch(`https://api.themoviedb.org/3/genre/movie/list?language=es`, options)
+        fetch('https://api.themoviedb.org/3/genre/movie/list?language=es', options)
           .then(response=> response.json())
           .then((data) => {
             setGenres(data.genres)
@@ -84,7 +78,7 @@ export function Home(){
           
       }, []);
 
-
+      console.log("soy los GENEROS", genres)
       
 
       const seleccionarGenre = (genreId)=>{
@@ -122,7 +116,7 @@ export function Home(){
               </div>
             </div>
             {/* <div key={peli.id} className="tarjeta" onClick={() => peliculaSeleccionada(peli)}> */}
-            {/*{selecPelicula && <Detalle selecPelicula={selecPelicula} />*/}
+            {/*selecPelicula && <Detalle genres={genres} />*/}
 
             <div>
               <Paginacion pelisPorPagina={pelisPorPagina} totalPelis={totalPelis} pagina={pagina} setPagina={setPagina}/>

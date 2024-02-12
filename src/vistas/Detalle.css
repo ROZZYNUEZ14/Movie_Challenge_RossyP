@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Keania+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Quicksand:wght@300&family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+.cajaPrincipalDetalle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 458px;
+}
+.cajaDetalle{
+    width:980px;
+    height: 330px;
+    background-color: #322F2F;
+    display: flex;
+    color: aliceblue;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 30px;
+}
+.imagenDetalle{
+    width: 20%;
+    border-radius: 30px 0px 0px 30px;
+}
+
+.cajaDatosDetalle{
+    width: 70%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cajaVoto{
+    width: 20%;
+    height: 190px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.circuloVoto{
+    border-radius: 70px;
+    background-color: #145b9c;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+}
+.tituloAño{
+    margin-top: 10px;
+}
+.tituloGenero{
+    margin-top: 5px;
+}
+.tituloSinopsis{
+    margin-top: 5px;
+}
+.textoD{
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+}

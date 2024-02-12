@@ -9,11 +9,9 @@ import { Detalle } from "./vistas/Detalle"
 //const Home = () => <h1 style={{ backgroundColor: 'red' }}>JJHJJJ</h1>
 //const Hola = () => <h1>Hola</h1>
 
-const inlineStyles = {
-    padding: 5,
-}
 
 const App = () => {
+
 
   
     return (
@@ -24,7 +22,7 @@ const App = () => {
     </header>*/}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies/:id" element={<Detalle />} />
+          <Route path="/movie/:id" element={<Detalle />} />
         </Routes>
       </BrowserRouter>
     );
