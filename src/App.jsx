@@ -21,7 +21,7 @@ const App = () => {
           <Link to="/Hola">Hola</Link>
     </header>*/}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/movie/:id" element={<Detalle />} />
         </Routes>
       </BrowserRouter>

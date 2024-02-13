@@ -1,20 +1,22 @@
-import { BrowserRouter } from 'react-router-dom';
-import { Home } from "../vistas/Home";
-import React from "react";
-import { render, screen} from "@testing-library/react";
 /*
-test("render movie cards", () => {
-  
-    const movies = [{title: "Wonka"},{title: "Freelance"}];
-  
-    const component = render(
-    <BrowserRouter>
-      <Home />
-    </BrowserRouter>
-  );
+import { render, screen, waitFor } from "@testing-library/react";
+import { Home } from "../vistas/Home"
+import { BrowserRouter } from "react-router-dom"; 
 
-  expect(screen.getByText("Wonka")).toBeInTheDocument();
-  expect(screen.getByText("Freelance")).toBeInTheDocument();
+
+
+test("render movie cards",() => {
+  const movies = [{ title: "Badland Hunters" }, { title: "Freelance" }];
+
+  render(
+   
+  
+  <BrowserRouter><Home pelis={movies} /></BrowserRouter>
+  ); 
+
+ 
+    expect(screen.queryByText("Badland Hunters")).toBeInTheDocument();
+    expect(screen.queryByText("Freelance")).toBeInTheDocument();
+ 
 });
 */
-

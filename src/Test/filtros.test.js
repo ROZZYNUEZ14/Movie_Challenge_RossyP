@@ -8,5 +8,5 @@ describe("<Filtro/>", () => {
         const labelElement = screen.getByLabelText(/Ordenar por:/i);
 
         expect(labelElement).toBeDefined();
-    });
+    }); 
 });

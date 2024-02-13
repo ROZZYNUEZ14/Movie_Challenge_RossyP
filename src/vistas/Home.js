@@ -8,7 +8,7 @@ import { useLocation, useNavigate, Link} from "react-router-dom";
 import sinImage from "../img/sinImage.png"
 
 
-export function Home(){
+export function Home({pelicula}){
  
   const navigate = useNavigate();
   
@@ -23,7 +23,7 @@ export function Home(){
     const [sortBy, setSortBy] = useState("")
     
      const totalPelis =total
-
+    
 
     const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzNDNmZDBiNDI0MjMxZGI3NzhhNTE5ZWUwZTRmZiIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XK6YLJBNIzATieAhms4iOq8q6V-3_RbmKJJbzboz7pg"; 
     //const apikey ="0c9343fd0b424231db778a519ee0e4ff"
@@ -90,6 +90,8 @@ export function Home(){
       }
       
       console.log("genreID", genreId)
+
+      pelicula = pelis
     return <>
             <div>
               < Titulo />

@@ -10,5 +10,5 @@ describe("Titulo", () => {
      // Esto mostrará el HTML renderizado en la consola de la prueba
     const logoPalomitas = screen.getAllByRole("img")[0];
     expect(logoPalomitas).toHaveAttribute("src", "palomitas.png")
-  });
+  }); 
 });
