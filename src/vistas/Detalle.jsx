@@ -9,20 +9,14 @@ import "./Detalle.css"
 
 export function Detalle(){
 
-    /*
-    const location = useLocation()
-    const movieId = location.pathname;
-    console.log(movieId)
-    */
 
     const {id} = useParams()
     const [pelicula, setPelicula] = useState();
+
     const [genres, setGenres] = useState([])
     const [genreId, setGenreId] = useState()
     const [sortBy, setSortBy] = useState("")
-
-    //const puntuación = pelicula.vote_average
-   
+    
     const imagen = "https://image.tmdb.org/t/p/original"
 
     const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzNDNmZDBiNDI0MjMxZGI3NzhhNTE5ZWUwZTRmZiIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XK6YLJBNIzATieAhms4iOq8q6V-3_RbmKJJbzboz7pg"; 
@@ -36,7 +30,7 @@ export function Detalle(){
         };
 
     useEffect(() => {
-       
+      
         //fetch(`https://api.themoviedb.org/3/movie/${id}?language=es-ES`, options)
         fetch(`https://api.themoviedb.org/3/movie/${id}?include_adult=false&include_video=false&language=es-ES&${genreId ? `&with_genres=${genreId}`: ""}${sortBy ? `&sort_by=${sortBy}` : ""}`, options)
 
