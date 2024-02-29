@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useLocation , useParams} from "react-router-dom";
+import { useLocation , useParams, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Filtro } from "../componentes/Filtros";
 import  Titulo  from "../componentes/Titulo";
 import sinImage from "../img/sinImage.png"
 import "./Detalle.css"
+import { func } from "prop-types";
 
 export function Detalle(){
 
@@ -17,6 +18,9 @@ export function Detalle(){
     const [genreId, setGenreId] = useState()
     const [sortBy, setSortBy] = useState("")
     
+    const navigate = useNavigate()
+    const location = useLocation()
+
     const imagen = "https://image.tmdb.org/t/p/original"
 
     const apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzkzNDNmZDBiNDI0MjMxZGI3NzhhNTE5ZWUwZTRmZiIsInN1YiI6IjY1OWRmZGMwOWJjZDBmMDA5NDY0MWE0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XK6YLJBNIzATieAhms4iOq8q6V-3_RbmKJJbzboz7pg"; 
@@ -68,13 +72,21 @@ export function Detalle(){
         
     }, [])
 
+
+    
+    function homeRetroceder (){
+      window.history.back();
+    }
+
+
     return (
         <div>
           <div>
             <Titulo />
-            <Filtro genres={genres} seleccionarGenre={seleccionarGenre} seleccionarSortBy={seleccionarSortBy} />
+            {//<Filtro genres={genres} seleccionarGenre={seleccionarGenre} seleccionarSortBy={seleccionarSortBy} />
+            }
           </div>
-      
+            <button className="botonHome" onClick={homeRetroceder}><i class="flecha fa-solid fa-arrow-left"></i></button>
           <div className="cajaPrincipalDetalle">
           {pelicula && (
             <div key={pelicula.id} className="cajaDetalle">

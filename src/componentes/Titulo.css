@@ -10,6 +10,7 @@
     font-size: 30px;
     display: flex;
     justify-content: center;
+    
 }
 .titulo::before {
     content: 'Ruta';

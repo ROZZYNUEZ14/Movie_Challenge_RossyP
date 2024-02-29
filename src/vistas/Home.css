@@ -5,7 +5,10 @@
     flex-grow: 1;
     width: 15%;
     height: auto;
-    
+    transition: transform 1.2s;
+}
+.tarjeta:hover{
+    transform: scale(1.1);
 }
 
 .imagenTarjeta{

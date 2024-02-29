@@ -63,7 +63,5 @@ describe("Tarjeta component", () => {
     expect(imagen).toBeInTheDocument();
     expect(imagen).toHaveAttribute("src", "https://image.tmdb.org/t/p/original/ejemplo.png");
   });
-
-
   
 });

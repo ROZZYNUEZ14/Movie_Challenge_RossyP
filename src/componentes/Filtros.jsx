@@ -1,21 +1,77 @@
 import "./Filtros.css"
 import React from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate} from "react-router-dom";
+
 
 export function Filtro(props){
     const {genres, seleccionarGenre, seleccionarSortBy} = props
     
-    //console.log("SOY GENRES", genres)
-    //console.log(seleccionarGenre)
+
+    const [selectGenre, setSelectGenre] = useState("")
+    const [selectSortBy, setSelectSortBy] = useState("")
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    useEffect(()=>{
+        const params = new URLSearchParams(location.search);
+        const guardarGenre = params.get("genre")
+        const guardarSortBy = params.get("sortBy")
+        //console.log( "SOY EL PARAMS URL", guardarGenre)
+        if(guardarGenre){
+            setSelectGenre(guardarGenre)
+            seleccionarGenre(guardarGenre)
+        }
+        if(guardarSortBy){
+            setSelectSortBy(guardarSortBy)
+            seleccionarSortBy(guardarSortBy)
+        }
+        
+    }, [window.location.search, seleccionarGenre, seleccionarSortBy, selectGenre, selectSortBy])
+
+    
     const genreSeleccionado =(e)=>{
         seleccionarGenre(e.target.value)
+        setSelectGenre(e.target.value)
+
+        const params = new URLSearchParams(location.search);
+        params.set("genre", e.target.value);
+        navigate(`?${params.toString()}`);
+    
     }
 
     const sortBySeleccionado = (e)=>{
         seleccionarSortBy(e.target.value)
+        setSelectSortBy(e.target.value)
+
+        const params = new URLSearchParams(location.search);
+        params.set("sortBy", e.target.value);
+        navigate(`?${params.toString()}`);
+    
+    }
+    //const filtrosVacio = document.querySelector("#filtro");
+    //const ordenarVacio = document.querySelector("#ordenar")
+
+    const volverInicio =() =>{
+        const params = new URLSearchParams();
+        params.set("page", "1");
+        window.location.href = `/?${params.toString()}`;
+        console.log(window.location)
+        seleccionarGenre("");
+        seleccionarSortBy("");
+        /*
+        const path = "/"
+        
+        navigate(path)
+        seleccionarGenre("");
+        seleccionarSortBy("");
+        
+        filtrosVacio.value = "";
+        ordenarVacio.value = "";
+        */
+    
     }
 
-    //console.log(genreSeleccionado)
-    //console.log(seleccionarGenre)
     return <>
         <div className="contenedorPrincipalFil">
             <div className="contenedorOrdenar">
@@ -46,7 +102,7 @@ export function Filtro(props){
             </div>
 
             <div className="contenedorBoton">
-                <button className="botonLimpiar">Limpiar</button>
+                <button className="botonInicio" role="button" name="volverAlInicio" onClick={volverInicio}><i className="fa-solid fa-house"></i></button>
             </div>
           
         </div>

@@ -4,13 +4,13 @@ import Titulo from "../componentes/Titulo";
 import { Filtro } from "../componentes/Filtros";
 import "./Home.css";
 import { Paginacion } from "../componentes/Paginacion";
-//import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Tarjeta from "../componentes/Tarjeta";
-import NavigateComponent from "../componentes/useNavigateComponent";
+//import NavigateComponent from "../componentes/useNavigateComponent";
 
 export function Home() {
  // const navigate = useNavigate();
-  const navigate = NavigateComponent()
+  const navigate = useNavigate()
   const [pelis, setPelis] = useState([]);
   const [total, setTotal] = useState();
   const [pagina, setPagina] = useState(1);
@@ -80,19 +80,19 @@ export function Home() {
     <>
       <div>
         <Titulo />
-        <Filtro genres={genres} seleccionarGenre={seleccionarGenre} seleccionarSortBy={seleccionarSortBy} />
+        <Filtro genres={genres} seleccionarGenre={seleccionarGenre} seleccionarSortBy={seleccionarSortBy} pagina={pagina}/>
       </div>
 
       <div className="contenedorPrincipalTarjetas">
         <div className="contenedorTarjetas">
-          {pelis.map((peli) => (
+          {pelis && pelis.map((peli) => (
             <Tarjeta key={peli.id} peli={peli} peliculaSeleccionada={peliculaSeleccionada} />
           ))}
         </div>
       </div>
-
+ 
       <div>
-        <Paginacion pelisPorPagina={pelisPorPagina} totalPelis={totalPelis} pagina={pagina} setPagina={setPagina} />
+        <Paginacion  pelisPorPagina={pelisPorPagina} totalPelis={totalPelis} pagina={pagina} setPagina={setPagina} />
       </div>
     </>
   );

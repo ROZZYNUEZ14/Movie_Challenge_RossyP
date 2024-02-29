@@ -10,6 +10,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 150px;
+    
 }
 
 .filtrar{
@@ -28,7 +29,7 @@
     padding: 3px;
 }
 
-.botonLimpiar{
+.botonInicio{
     border-radius: 8px;
     background-color: #941305;
     color: white;
@@ -40,5 +41,5 @@
 
 .opcionesFiltros{
     color: black;
-    background-color: #941305;
+    background-color: #ffffff;
 }

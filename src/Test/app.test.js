@@ -6,4 +6,4 @@ import App from '../App';
 test('Accede al enlace', () => {
   render(<App />); 
 
-}); 
+});
